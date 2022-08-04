@@ -11,16 +11,15 @@ let position = 0;
 
 function onSubmitForm(e){
 e.preventDefault();
-let delay = delayEl.value ;
+let delayStep = delayEl.value ;
 const step = stepEl.value;
 const amount = amountEl.value;
 
 for (position = 1; position <= amount; position += 1) {
-
+  const delay = (position - 1) * step + +delayStep;
 createPromise(position, delay)
 .then(({ position, delay }) => Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`))
   .catch(({ position, delay }) => Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`))
-  delay = (position - 1) * step + +delay;
 }
 }
 
@@ -37,4 +36,3 @@ function createPromise(position, delay) {
   }, delay);
 });
 }
-
