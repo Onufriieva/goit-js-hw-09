@@ -14,6 +14,7 @@ let currentTime = new Date();
 let sameData;
 
 refs.startBtn.addEventListener('click', (startTimer));
+refs.startBtn.disabled = true;
 
 
 const options = {
